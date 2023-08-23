@@ -5,7 +5,6 @@ namespace Recca0120\FilamentNestable;
 use Filament\Support\Assets\Asset;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
-use Filament\Support\Icons\Icon;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -76,7 +75,7 @@ class FilamentNestableServiceProvider extends PackageServiceProvider
     protected function getAssets(): array
     {
         return [
-            Js::make('filament-nestable', __DIR__.'/../resources/dist/filament-nestable.js'),
+            Js::make('filament-nestable', __DIR__ . '/../resources/dist/filament-nestable.js'),
         ];
     }
 }
