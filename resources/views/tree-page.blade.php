@@ -2,6 +2,9 @@
     <div
         wire:disabled="updateTree"
         x-data="nestableComponent"
+        x-load-css="[
+            @js(\Filament\Support\Facades\FilamentAsset::getStyleHref('filament-nestable', 'recca0120/filament-nestable'))
+        ]"
         x-load-js="[
             @js(\Filament\Support\Facades\FilamentAsset::getScriptSrc('filament-nestable', 'recca0120/filament-nestable'))
         ]"
