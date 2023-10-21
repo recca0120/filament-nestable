@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Database\Eloquent\Model;
+use Kalnoy\Nestedset\Collection;
 use Recca0120\FilamentNestable\Tests\Fixtures\Filament\Resources\Pages\TreePage;
 use Recca0120\FilamentNestable\Tests\Fixtures\Models\Page;
 use Symfony\Component\DomCrawler\Crawler;
@@ -76,7 +78,11 @@ it('can update tree', closure: function () {
             'children' => array_map(static fn(array $node) => $pick($node), $node['children']),
         ]);
     };
-    $tree = Page::defaultOrder()->get()->toTree()->first()->toArray();
 
-    expect($pick($tree))->toMatchArray($newTree);
+    /** @var Collection $collection */
+    $collection = Page::defaultOrder()->get();
+    /** @var Model $tree */
+    $tree = $collection->toTree()->first();
+
+    expect($pick($tree->toArray()))->toMatchArray($newTree);
 });
