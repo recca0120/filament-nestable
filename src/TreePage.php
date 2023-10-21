@@ -13,13 +13,13 @@ abstract class TreePage extends Page
 
     abstract protected function getTree(): Enumerable;
 
-    abstract protected function doUpdateTree(array $data): void;
+    abstract protected function updateTree(array $data): void;
 
     #[Renderless]
     #[On('update-tree')]
-    public function updateTree(...$data): void
+    public function onUpdateTree(...$data): void
     {
-        $this->doUpdateTree($data);
+        $this->updateTree($data);
     }
 
     public function getViewData(): array

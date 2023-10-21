@@ -35,7 +35,7 @@
                 @click="updateTree"
             >
                 <x-filament::loading-indicator class="h-4 w-4" wire:loading/>
-                <span wire:loading.remove>Save</span>
+                Save
             </x-filament::button>
         </div>
         <ol x-data="nestableTreeComponent">
