@@ -24,6 +24,8 @@ abstract class TreePage extends Page
 
     public function getViewData(): array
     {
-        return ['tree' => $this->getTree()];
+        return [
+            'tree' => $this->getTree(),
+        ];
     }
 }
