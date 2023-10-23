@@ -76,8 +76,8 @@ class FilamentNestableServiceProvider extends PackageServiceProvider
     protected function getAssets(): array
     {
         return [
-            Css::make('filament-nestable', __DIR__.'/../resources/dist/filament-nestable.css'),
-            Js::make('filament-nestable', __DIR__.'/../resources/dist/filament-nestable.js'),
+            Css::make('filament-nestable', __DIR__ . '/../resources/dist/filament-nestable.css'),
+            Js::make('filament-nestable', __DIR__ . '/../resources/dist/filament-nestable.js'),
         ];
     }
 }

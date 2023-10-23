@@ -21,7 +21,6 @@ class PageResource extends Resource
         return $table;
     }
 
-
     public static function getPages(): array
     {
         return [

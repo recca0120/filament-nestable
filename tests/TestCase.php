@@ -32,7 +32,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(function (string $modelName) {
-            return 'Recca0120\\FilamentNestable\\Database\\Factories\\'.class_basename($modelName).'Factory';
+            return 'Recca0120\\FilamentNestable\\Database\\Factories\\' . class_basename($modelName) . 'Factory';
         });
     }
 
@@ -48,8 +48,8 @@ class TestCase extends Orchestra
             InfolistsServiceProvider::class,
             LivewireServiceProvider::class,
             NotificationsServiceProvider::class,
-//            SpatieLaravelSettingsPluginServiceProvider::class,
-//            SpatieLaravelTranslatablePluginServiceProvider::class,
+            //            SpatieLaravelSettingsPluginServiceProvider::class,
+            //            SpatieLaravelTranslatablePluginServiceProvider::class,
             SupportServiceProvider::class,
             TablesServiceProvider::class,
             WidgetsServiceProvider::class,
@@ -61,10 +61,11 @@ class TestCase extends Orchestra
     public function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'testing');
-        config()->set('app.key', 'base64:'.base64_encode(Encrypter::generateKey(config('config.app.cipher'))));
+        config()->set('app.key', 'base64:' . base64_encode(Encrypter::generateKey(config('config.app.cipher'))));
         config()->set('app.debug', true);
 
-        $migration = new class extends Migration {
+        $migration = new class extends Migration
+        {
             public function up(): void
             {
                 Schema::create('users', static function (Blueprint $table) {
@@ -77,7 +78,8 @@ class TestCase extends Orchestra
         };
         $migration->up();
 
-        $migration = new class extends Migration {
+        $migration = new class extends Migration
+        {
             /**
              * Run the migrations.
              */

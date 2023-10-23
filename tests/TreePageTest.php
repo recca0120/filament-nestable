@@ -5,6 +5,7 @@ use Kalnoy\Nestedset\Collection;
 use Recca0120\FilamentNestable\Tests\Fixtures\Filament\Resources\Pages\TreePage;
 use Recca0120\FilamentNestable\Tests\Fixtures\Models\Page;
 use Symfony\Component\DomCrawler\Crawler;
+
 use function Pest\Livewire\livewire;
 
 beforeEach(function () {
@@ -30,13 +31,13 @@ it('can render tree page', closure: function () {
     $crawler = new Crawler($component->html());
 
     $pick = static function (Crawler $node) use ($childrenSelector, &$pick) {
-        return $node->filter($childrenSelector)->each(static fn(Crawler $node) => array_filter([
+        return $node->filter($childrenSelector)->each(static fn (Crawler $node) => array_filter([
             'name' => $node->filter('span')->first()->text(),
             'children' => $pick($node),
         ]));
     };
 
-    $tree = $crawler->filter($rootSelector)->each(fn(Crawler $node) => [
+    $tree = $crawler->filter($rootSelector)->each(fn (Crawler $node) => [
         'name' => $node->filter('span')->first()->text(),
         'children' => $pick($node),
     ]);
@@ -75,7 +76,7 @@ it('can update tree', closure: function () {
     $pick = static function (array $node) use (&$pick) {
         return array_filter([
             'name' => $node['name'],
-            'children' => array_map(static fn(array $node) => $pick($node), $node['children']),
+            'children' => array_map(static fn (array $node) => $pick($node), $node['children']),
         ]);
     };
 
